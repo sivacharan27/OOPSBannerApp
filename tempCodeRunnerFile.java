@@ -1,80 +1,64 @@
-import java.util.HashMap;
-
+/**
+ * OOPSBannerApp UC6 – OOPS Banner Application (Use Case 6)
+ * Modular banner generation using helper methods.
+ */
 public class OOPSBannerApp {
 
-    /**
-     * Creates a HashMap containing ASCII patterns for characters.
-     */
-    public static HashMap<Character, String[]> createCharacterMap() {
-
-        HashMap<Character, String[]> charMap = new HashMap<>();
-
-        charMap.put('O', new String[]{
-                " *** ",
-                "*   *",
-                "*   *",
-                "*   *",
-                "*   *",
-                "*   *",
-                " *** "
-        });
-
-        charMap.put('P', new String[]{
-                "**** ",
-                "*   *",
-                "*   *",
-                "**** ",
-                "*    ",
-                "*    ",
-                "*    "
-        });
-
-        charMap.put('S', new String[]{
-                " ****",
-                "*    ",
-                "*    ",
-                " *** ",
-                "    *",
-                "    *",
-                "**** "
-        });
-
-        return charMap;
+    // Pattern for letter 'O'
+    public static String[] getOPattern() {
+        return new String[] {
+            " *** ",
+            "*   *",
+            "*   *",
+            "*   *",
+            "*   *",
+            "*   *",
+            " *** "
+        };
     }
 
-    /**
-     * Displays the banner message using ASCII patterns.
-     */
-    public static void displayBanner(String message, HashMap<Character, String[]> charMap) {
-
-        int patternHeight = charMap.get('O').length;
-
-        for (int line = 0; line < patternHeight; line++) {
-
-            StringBuilder sb = new StringBuilder();
-
-            for (char ch : message.toCharArray()) {
-
-                String[] pattern = charMap.get(ch);
-
-                if (pattern != null) {
-                    sb.append(pattern[line]).append(" ");
-                }
-            }
-
-            System.out.println(sb.toString());
-        }
+    // Pattern for letter 'P'
+    public static String[] getPPattern() {
+        return new String[] {
+            "**** ",
+            "*   *",
+            "*   *",
+            "**** ",
+            "*    ",
+            "*    ",
+            "*    "
+        };
     }
 
-    /**
-     * Main method
-     */
+    // Pattern for letter 'S'
+    public static String[] getSPattern() {
+        return new String[] {
+            " ****",
+            "*    ",
+            "*    ",
+            " *** ",
+            "    *",
+            "    *",
+            "**** "
+        };
+    }
+
+    // Main method
     public static void main(String[] args) {
 
-        HashMap<Character, String[]> charMap = createCharacterMap();
+        String[] oPattern1 = getOPattern();
+        String[] oPattern2 = getOPattern(); // second O
+        String[] pPattern = getPPattern();
+        String[] sPattern = getSPattern();
 
-        String message = "OOPS";
-
-        displayBanner(message, charMap);
+        // Assemble and print banner
+        for (int i = 0; i < oPattern1.length; i++) {
+            System.out.println(
+                oPattern1[i] + "  " +
+                oPattern2[i] + "  " +
+                pPattern[i] + "  " +
+                sPattern[i]
+            );
+        }
     }
 }
